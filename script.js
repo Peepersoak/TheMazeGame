@@ -275,6 +275,7 @@ class Player {
       console.log("You Won");
       this.winner = true;
       increments += 2;
+
       init();
     }
 
