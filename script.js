@@ -3,6 +3,13 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
+const level = document.querySelector(".level");
+let currentLevel = 1;
+const tissueScore = document.querySelector(".tissue");
+let tissueCurrentScore = 0;
+const waterBucketScore = document.querySelector(".water");
+let waterCurrentScore = 0;
+
 let canvasSize = window.innerWidth / 2.5;
 
 let gridCount = 3;
@@ -42,7 +49,7 @@ function init() {
 
   switch (difficulty) {
     case "easy":
-      gridCount = 10;
+      gridCount = 4;
       break;
     case "medium":
       gridCount = 30;
@@ -61,8 +68,6 @@ function init() {
 
   canvas.width = canvasSize;
   canvas.height = canvasSize;
-
-  console.log(gridCount, cellSize, canvas.height, canvas.width);
 
   player = new Player({ color: "pink" });
 
@@ -276,6 +281,9 @@ class Player {
       this.winner = true;
       increments += 2;
 
+      currentLevel++;
+      level.textContent = `Level: ${currentLevel}`;
+
       init();
     }
 
@@ -289,11 +297,15 @@ class Player {
             tissueSound.pause();
             tissueSound.currentTime = 0;
             tissueSound.play();
+            tissueCurrentScore++;
+            tissueScore.textContent = `Tissue: ${tissueCurrentScore}`;
             break;
           case "water":
             waterSound.pause();
             waterSound.currentTime = 0;
             waterSound.play();
+            waterCurrentScore++;
+            waterBucketScore.textContent = `Water Bucket: ${waterCurrentScore}`;
             break;
         }
         carrots.splice(index, 1);

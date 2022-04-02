@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap");
+
 body {
   margin: 0;
   background: linear-gradient(0deg, #b4f36a, #dbffb4);
+}
+
+h1 {
+  font-family: "Gochi Hand", cursive;
+  margin: 0;
+  color: rgb(0, 39, 0);
 }
 
 .flex {
